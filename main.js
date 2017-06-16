@@ -25,7 +25,7 @@
       'id': 'nine',
     },
     {
-      'text': ' / ',
+      'text': ' ÷ ',
       'value': '/',
       'id': 'divide',
     },
@@ -94,7 +94,7 @@
   var calculator = document.querySelector('.calculator');
   var displayElement = document.createElement('div');
   displayElement.className = 'calcDisplay';
-  displayElement.id = 'display';
+  displayElement.id = 'calcWindow';
   calculator.appendChild(displayElement);
 
   for (var  i = 0; i < numbers.length; i++) {
@@ -118,75 +118,81 @@
     }
     calculator.appendChild(inputElement);
   }
-var output = '';
+  var output = '';
   var inputCtrls = document.querySelectorAll('.input-ctrl');
   for (var i = 0; i < inputCtrls.length; i++) {
     var input = inputCtrls[i];
     input.addEventListener('click', function(event){
       var num = this.textContent;
-          output = displayElement.innerHTML +=num;
-          if(output.length >= 20){
-            alert("It's OVER 9000!!!");
-            output = displayElement.innerHTML="";
-          }
+      output = displayElement.innerHTML +=num;
+      if(output.length >= 20){
+        alert("It's OVER 9000!!!");
+        output = displayElement.innerHTML="";
+      }
 
     });
   }
   var clearInput = document.querySelector('.calcClear');
   clearInput.addEventListener('click', function (event) {
     var clear = this.textContent;
-     output = displayElement.innerHTML="";
+    output = displayElement.innerHTML="";
   });
-var decimalInput = document.querySelector('.calcDecimal');
-decimalInput.addEventListener('click', function(event) {
-  var decimal = this.textContent;
-  if(displayElement.innerHTML === ""){
-    output = displayElement.innerHTML="0.";
-  } else if (displayElement.innerHTML === output) {
-    displayElement.innerHTML = displayElement.innerHTML + ".";
+
+  var decimalInput = document.querySelector('.calcDecimal');
+  decimalInput.addEventListener('click', function(event) {
+    var decimal = this.value;
+    displayElement.innerHTML += '.'
+    // if(displayElement.innerHTML === "") {
+    //  output = displayElement.innerHTML = displayElement.innerHTML + "0.";
+    //  }
+    // else if(displayElement.innerHTML === output) {
+    //   ;
+    //
+    // }
+
+
+    // if(displayElement.innerHTML === ""){
+    //   output = displayElement.innerHTML="0.";
+    // } else if (displayElement.innerHTML.lenght === output) {
+    //   displayElement.innerHTML = displayElement.innerHTML + ".";
+    // }
+
+  });
+  var result = document.querySelector('.calcEqual'); //
+  console.log(result);
+  result.addEventListener('click', function(event) {
+    var split = displayElement.innerHTML.split(" ", 3);
+    console.log(split);
+    for (var i = 0; i < split.length; i++) {
+      var first = parseInt(split[0]);
+      console.log(first);
+      var oper = split[1];
+      var second = parseInt(split[2]);
+      var total = '';
+      if (oper === '+') {
+        total = first + second;
+        displayElement.innerHTML = total;
+      } else if (oper === '-'){
+        total = first - second;
+        displayElement.innerHTML = total;
+      } else if (oper === 'X'){
+        total = first * second;
+        displayElement.innerHTML = total;
+      } else if (oper === '÷'){
+        total = first / second;
+        displayElement.innerHTML = total;
+      }
   }
-
-
-});
-var result = document.querySelector('.calcEqual');
-console.log(result);
-result.addEventListener('click', function(event) {
-var split = displayElement.innerHTML.split(" ", 3);
-console.log(split);
-for (var i = 0; i < split.length; i++) {
-   var first = parseInt(split[0]);
-   console.log("This is: first ",first);
-   var oper = split[1];
-   console.log("This is: operator", oper);
-   var second = parseInt(split[2]);
-   console.log("This is: second", second);
-   var total = '';
-   if (oper === '+') {
-     total = first + second;
-     console.log(total);
-     displayElement.innerHTML = total;
-   } else if (oper === '-'){
-     total = first - second;
-     displayElement.innerHTML = total;
-   } else if (oper === 'X'){
-     total = first * second;
-     displayElement.innerHTML = total;
-   } else if (oper === '/'){
-     total = first / third;
-     displayElement.innerHTML = total;
-}
-}
-
-});
+  });
   // var num = document.querySelectorAll('button');
   // console.log(num);
   // var numValue = [];
   // for (var n = 0; n < num.length; n++) {
   //    console.log(num[i]);
   //   console.log(numValue);
-    // numValue.addEventListener('click', function(){
-    // document.querySelector('.calcDisplay').innerHTML = num.value;
-    // });
+  // numValue.addEventListener('click', function(){
+  // document.querySelector('.calcDisplay').innerHTML = num.value;
+  // });
   // }
 
 
