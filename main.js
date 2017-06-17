@@ -127,6 +127,7 @@
       output = displayElement.innerHTML +=num;
       if(output.length >= 20){
         alert("It's OVER 9000!!!");
+        alert("Anime joke...");
         output = displayElement.innerHTML="";
       }
 
@@ -164,10 +165,10 @@
     var split = displayElement.innerHTML.split(" ", 3);
     console.log(split);
     for (var i = 0; i < split.length; i++) {
-      var first = parseInt(split[0]);
+      var first = Number(split[0]);
       console.log(first);
       var oper = split[1];
-      var second = parseInt(split[2]);
+      var second = Number(split[2]);
       var total = '';
       if (oper === '+') {
         total = first + second;
