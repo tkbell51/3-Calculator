@@ -143,23 +143,10 @@
   decimalInput.addEventListener('click', function(event) {
     var decimal = this.value;
     displayElement.innerHTML += '.'
-    // if(displayElement.innerHTML === "") {
-    //  output = displayElement.innerHTML = displayElement.innerHTML + "0.";
-    //  }
-    // else if(displayElement.innerHTML === output) {
-    //   ;
-    //
-    // }
 
-
-    // if(displayElement.innerHTML === ""){
-    //   output = displayElement.innerHTML="0.";
-    // } else if (displayElement.innerHTML.lenght === output) {
-    //   displayElement.innerHTML = displayElement.innerHTML + ".";
-    // }
 
   });
-  var result = document.querySelector('.calcEqual'); //
+  var result = document.querySelector('.calcEqual');
   console.log(result);
   result.addEventListener('click', function(event) {
     var split = displayElement.innerHTML.split(" ", 3);
@@ -185,32 +172,6 @@
       }
   }
   });
-  // var num = document.querySelectorAll('button');
-  // console.log(num);
-  // var numValue = [];
-  // for (var n = 0; n < num.length; n++) {
-  //    console.log(num[i]);
-  //   console.log(numValue);
-  // numValue.addEventListener('click', function(){
-  // document.querySelector('.calcDisplay').innerHTML = num.value;
-  // });
-  // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }());
